@@ -12,6 +12,9 @@ SN are the neurons that activate if an "unsafe" input is passed to an LLM
 - https://arxiv.org/pdf/2402.05162
 - https://arxiv.org/pdf/2406.14144
 
+### Githubs
+- implementation chen paper: https://github.com/THU-KEG/SafetyNeuron.git
+
 ## Approach
 1. Compare approaches from Literature
 2. Find Small LLM and run Locally 
