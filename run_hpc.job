@@ -28,6 +28,6 @@ conda activate $ENV_NAME
 echo "Python version: $(python --version)"
 echo "Working directory: $(pwd)"
 
-pip3 install Pillow
+pip3 install transformers
 
-# your code goes here: how do you run the grayscale filter in 'turn_into_grayscale'?
+python llm.model.test.py

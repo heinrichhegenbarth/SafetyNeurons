@@ -1,5 +1,3 @@
-import pandas as pd
-
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b")
@@ -10,5 +8,6 @@ input_ids = tokenizer(input_text, return_tensors="pt")
 
 outputs = model.generate(**input_ids)
 
-print(tokenizer.decode(outputs[0]))
+with open('./output.txt', 'w') as file:
+    file.write(tokenizer.decode(outputs[0]))
 
