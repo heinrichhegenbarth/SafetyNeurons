@@ -1,4 +1,5 @@
 .env
 wandb/*
 output.txt
-
+data/*
+models/*
