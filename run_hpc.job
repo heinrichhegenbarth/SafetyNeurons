@@ -8,8 +8,12 @@
 #SBATCH --partition=acltr           # Get any available node
 
 
-echo "Running on $(hostname):"
 module load Anaconda3  # Load anaconda
+
+
+echo "Running on $(hostname):"
+module load Anaconda3
+source activate /home/hheg_stli/condaenvs/myenv
 
 # Accept terms and conditions
 
@@ -18,22 +22,12 @@ module load Anaconda3  # Load anaconda
 #conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
 # Init anaconda (in the HPC, prefer to use the following instead of 'conda init')
-eval "$(conda shell.bash hook)"
 
-ENV_NAME='myenv'
-if ! conda env list | grep -q "$ENV_NAME"; then
-    echo 'Creating new conda env...'
-    conda create --name "$ENV_NAME" -y
-    echo 'Created'
-else
-    echo "Environment '$ENV_NAME' already exists."
-fi
-conda activate $ENV_NAME
+
 echo "Python version: $(python --version)"
 echo "Working directory: $(pwd)"
 
-pip3 install transformers
 
-python llm.model.test.py
+python testing.py
 
-echo "Done Running, Safety neurons job!"
+echo "jobs done! :)"
