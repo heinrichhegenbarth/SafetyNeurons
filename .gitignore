@@ -3,3 +3,4 @@ wandb/*
 output.txt
 data/*
 models/*
+.ipynb_checkpoints/*
