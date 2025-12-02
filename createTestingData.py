@@ -89,4 +89,3 @@ df.to_csv('testing.csv')
 labels_df = pd.DataFrame(training_labels)
 
 labels_df.to_csv('testLabs.csv')
-
