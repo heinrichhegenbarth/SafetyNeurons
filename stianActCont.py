@@ -45,7 +45,7 @@ activations_safe = {}
 #TODO understand the hook function
 def get_hook(activation_dict, name):
     def hook(module, input, output):
-        activation_dict[name] = output.detach().float().cpu()
+        activation_dict[name] = output.detach().float().cpu()       #the activations
     return hook
 
 # Pick the MLP layers

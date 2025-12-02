@@ -31,7 +31,7 @@ training_labels = df_train['label'].to_list()
 
 #-------------------------------inference--------------------------------
 
-inputs = tokenizer(train_prompts[:2], return_tensors="pt", padding=True).to(model_base.device)
+inputs = tokenizer(train_prompts[:400], return_tensors="pt", padding=True).to(model_base.device)
 
 # dictionary for storing activations: 
 #TODO master dict??
@@ -47,7 +47,7 @@ def get_hook(activation_dict, name):
 # Pick the MLP layers
 #TODO model the arcitecture in README.md
 nlayers = 36
-nlayers = min(nlayers, 3)      #ensures we stay within 36 (layers in LLM)
+nlayers = min(nlayers, 36)      #ensures we stay within 36 (layers in LLM)
 for index in range(nlayers):        
      
     # layer = model.model.layers[LAYER_INDEX]
@@ -70,10 +70,17 @@ for index in range(nlayers):
 
 # flatten the layers to have a table with all neuron activations for all prompts
 #layers1 (prompts, tokens, neurons)
-print(activations_base['layer_0'].size())
-print(activations_base['layer_0'])
-long_tensor = torch.cat([layer for layer in activations_base[f'layer_{layer}']])
-# add back the labels to the data frame
 
-print(long_tensor)
-# save to hpc
+layers_concat = torch.cat([v for v in activations_base.values()], dim=2)
+print(layers_concat.shape)
+
+
+mean_prompt = layers_concat.mean(dim=1)
+
+print(mean_prompt.shape)
+
+
+
+df = pd.DataFrame(mean_prompt)
+
+df.to_csv('master_df.csv')
