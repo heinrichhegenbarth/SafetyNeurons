@@ -31,7 +31,7 @@ training_labels = df_train['label'].to_list()
 
 #-------------------------------inference--------------------------------
 
-inputs = tokenizer(train_prompts, return_tensors="pt", padding=True).to(model_base.device)
+inputs = tokenizer(train_prompts[:400], return_tensors="pt", padding=True).to(model_base.device)
 
 # dictionary for storing activations: 
 #TODO master dict??
