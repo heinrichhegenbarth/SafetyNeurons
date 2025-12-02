@@ -3,6 +3,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from huggingface_hub import snapshot_download
 import json
 import pandas as pd
+torch.cuda.empty_cache()
 
 #-----------------------Data download-------------------------
 # model paths (update if different)
