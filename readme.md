@@ -7,15 +7,6 @@ Using the concept safety neurons (SN) to predict "unsafe" inputs to an LLM
 SN are the neurons that activate if an "unsafe" input is passed to an LLM
 
 ## Literature/ Reads
-- Toy Models of Superposition 
-| [Elhage et al., 2022](https://transformer-circuits.pub/2022/toy_model/index.html)
-- Foundational Challenges in Assuring Alignment and
-Safety of Large Language Models 
-| [Anwar et al., 2024](https://arxiv.org/pdf/2404.09932) (2.2, 2.7, 3.1, 3.2)
-- Assessing the Brittleness of Safety Alignment
-via Pruning and Low-Rank Modifications 
-| [Wei et al., 2024](https://arxiv.org/pdf/2402.05162)
-- Towards Understanding Safety Alignment:
 A Mechanistic Perspective from Safety Neurons 
 | [Chen et al., 2025](https://arxiv.org/pdf/2406.14144)
 
