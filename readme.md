@@ -20,8 +20,9 @@ The safety neurons are then identified by running the same harmful prompts throu
 that changed the most. These are our safety neurons. 
 
 
-### Safety Neurons
-SN are the neurons that activate if an "unsafe" input is passed to an LLM
+### Inference-time activation contrasting
+![alt text](<WhatsApp Image 2025-12-02 at 16.28.35.jpeg>)
+
 
 ## Literature/ Reads
 - Towards Understanding Safety Alignment:
