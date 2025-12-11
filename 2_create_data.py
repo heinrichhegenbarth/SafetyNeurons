@@ -112,15 +112,15 @@ def run_batched_activation_generation(prompts):
 # %%
 # Create and Save Training Data
 training_features = run_batched_activation_generation(train_prompts)
-df = pd.DataFrame(training_features.numpy())
+df_training_features = pd.DataFrame(training_features.numpy())
 df_training_labels = pd.DataFrame(training_labels)
-df = pd.concat([df_training_labels, df], axis=1)
+df_training_data = pd.concat([df_training_labels, df_training_features], axis=1)
 df_training_data.to_csv("training_data.csv", index=False)
 
 # %%
 # Create and Save Testing Data
 testing_features = run_batched_activation_generation(test_prompts)
-df = pd.DataFrame(testing_features.numpy())
+df_testing_features = pd.DataFrame(testing_features.numpy())
 df_testing_labels = pd.DataFrame(test_labels)
-df = pd.concat([df_testing_labels, df], axis=1)
+df_testing_data = pd.concat([df_testing_labels, df_testing_features], axis=1)
 df_testing_data.to_csv("testing_data.csv", index=False)
