@@ -2,16 +2,28 @@
 # Imports
 
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 from huggingface_hub import snapshot_download
 import json
 import pandas as pd
+import random
+import numpy as np
+import os
 
 # %%
 # Data download
 
 PATH_BASE = "./models/qwen3/Qwen3-4B"
 BATCH_SIZE = 40
+SEED = 42
+
+# Set random seed/key
+os.environ["PYTHONHASHSEED"] = str(SEED)
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+torch.cuda.manual_seed_all(SEED)
+set_seed(SEED)
 
 tokenizer = AutoTokenizer.from_pretrained(PATH_BASE, local_files_only=True)
 
@@ -93,9 +105,9 @@ def build_feature_tensor(activations_all):
 def run_batched_activation_generation(prompts):
     activations_all = {}
 
-    for batch in range(0, len(train_prompts), BATCH_SIZE):
-        end = min(batch + BATCH_SIZE, len(train_prompts))
-        batch_prompts = train_prompts[batch:end]
+    for batch in range(0, len(prompts), BATCH_SIZE):
+        end = min(batch + BATCH_SIZE, len(prompts))
+        batch_prompts = prompts[batch:end]
         activations = get_inference(batch_prompts, model_base, tokenizer)
         # accumulate per-layer, averaging over tokens to avoid seq-length mismatches
         for k, v in activations.items():  # v: [batch, tokens, hidden]
