@@ -3,11 +3,16 @@
 
 import pandas as pd
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, recall_score, classification_report, confusion_matrix
+from sklearn.metrics import (
+    accuracy_score,
+    recall_score,
+    classification_report,
+    confusion_matrix,
+)
 import joblib
 from sklearn.decomposition import PCA
 
-BASE_PATH = "/data/classifier_data"
+BASE_PATH = "./data/classifier_data"
 OUTPUT_PATH = "./models/classifiers"
 # %%
 # Data
@@ -114,7 +119,8 @@ def evaluate_model(model_name, y_true, predictions):
     print(f"accuracy: {accuracy}")
     print(f"recall: {recall}")
     print(f"confusion matrix: {cm}")
-    print(f"classification report: {report}")
+    print(f"classification report: {report} \n \n")
+
 
 
 evaluate_model("safety neurons", y_test_sn, predictions_test_sn)
