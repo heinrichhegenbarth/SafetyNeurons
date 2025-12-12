@@ -58,17 +58,17 @@ print(f"test_raw head: {test_raw.head(2)}")
 # preparing the data
 
 # filter by safety neurons
-train_temp = train_raw.iloc[:, 0]
-test_temp = test_raw.iloc[:, 0]
+train_temp = train_raw.iloc[[:, 0]]
+test_temp = test_raw.iloc[[:, 0]]
 
 
 safety_set = set(safety_neurons['neuron_index'])
 column_mask = train_temp.columns.isin(safety_set)
 
-X_train_sn = train_temp.loc[:, column_mask]
-y_train_sn = train_raw.iloc[:, 0]
-X_test_sn = test_raw.loc[:, column_mask]
-y_test_sn = test_raw.iloc[:, 0]
+X_train_sn = train_temp.loc[[:, column_mask]]
+y_train_sn = train_raw.iloc[[:, 0]]
+X_test_sn = test_raw.loc[[:, column_mask]]
+y_test_sn = test_raw.iloc[[:, 0]]
 
 print(f"X_train_sn shape: {X_train_sn.shape}")
 print(f"y_train_sn shape: {y_train_sn.shape}")
@@ -77,18 +77,18 @@ print(f"y_test_sn shape: {y_test_sn.shape}")
 
 # pca
 pca = PCA(n_components=0.95)
-X_train_pca = pca.fit_transform(train_raw.drop(columns=["0"]))
-X_test_pca = pca.transform(test_raw.drop(columns=["0"]))
-y_train_pca = train_raw.iloc[:, 0]
-y_test_pca = test_raw.iloc[:, 0]
+X_train_pca = pca.fit_transform(train_raw.iloc[[:, 1:]])
+X_test_pca = pca.transform(test_raw.iloc[[:, 1:]])
+y_train_pca = train_raw.iloc[[:, 0]]
+y_test_pca = test_raw.iloc[[:, 0]]
 
 print(f"number principal components: {pca.n_components_}")
 
 # full data
-X_train_full = train_raw.drop(columns=["0"])
-X_test_full = test_raw.drop(columns=["0"])
-y_train_full = train_raw.iloc[:, 0]
-y_test_full = test_raw.iloc[:, 0]
+X_train_full = train_raw.iloc[[:, 1:]]
+X_test_full = test_raw.iloc[[:, 1:]]
+y_train_full = train_raw.iloc[[:, 0]]
+y_test_full = test_raw.iloc[[:, 0]]
 
 # %%
 # training the models
