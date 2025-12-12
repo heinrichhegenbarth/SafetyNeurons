@@ -59,7 +59,12 @@ print(f"test_raw head: {test_raw.head(2)}")
 
 # filter by safety neurons
 train_temp = train_raw.iloc[:, 1:]
-test_temp = test_raw.iloc[:, [0]]
+test_temp = test_raw.iloc[:, 1:]
+
+print(f"dtyps of train_temp: {train_temp.dtypes}")
+print(f"dtyps of test_temp: {test_temp.dtypes}")
+print(f"train_temp shape: {train_temp.shape}")
+print(f"test_temp shape: {test_temp.shape}")
 
 
 safety_set = set(safety_neurons.loc[:, 'neuron_index'])
@@ -67,7 +72,7 @@ column_mask = train_temp.columns.isin(safety_set)
 
 X_train_sn = train_temp.loc[:, column_mask]
 y_train_sn = train_raw.iloc[:, 0]
-X_test_sn = test_raw.loc[:, column_mask]
+X_test_sn = test_temp.loc[:, column_mask]
 y_test_sn = test_raw.iloc[:, 0]
 
 print(f"dtyps of X_train_sn: {X_train_sn.dtypes}")
