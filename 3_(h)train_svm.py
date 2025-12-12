@@ -10,10 +10,11 @@ from sklearn.metrics import accuracy_score
 # %%
 # Data
 
-# Data
+BASE_PATH = "/home/hheg_stli/AML_Project/data/classifier_data/"
 
-train_raw = pd.read_csv('training_data.csv')
-test_raw = pd.read_csv('testing_data.csv')
+train_raw = pd.read_csv(f'{BASE_PATH}/training_data.csv')
+test_raw = pd.read_csv(f'{BASE_PATH}/testing_data.csv')
+safety_neurons = pd.read_csv(f'{BASE_PATH}/top_safetyneurons.csv')
 
 print(f"train_raw shape: {train_raw.shape}")
 print(f"test_raw shape: {test_raw.shape}")
