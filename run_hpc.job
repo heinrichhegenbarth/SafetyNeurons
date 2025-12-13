@@ -2,11 +2,10 @@
 
 #SBATCH --job-name=SafetyNeurons    # Job name
 #SBATCH --output=job.%j.out         # Name of output file
-#SBATCH --cpus-per-task=1           # Your program is mostly single-threaded
-#SBATCH --gres=gpu:a100_40gb:1                 # Request a GPU
-#SBATCH --mem=16G                   # Increase memory request
+#SBATCH --cpus-per-task=8           # Your program is mostly single-threaded
+#SBATCH --mem=64G                   # Increase memory request
 #SBATCH --time=01:00:00             # Max run time
-#SBATCH --partition=acltr           # Partition
+#SBATCH --partition=cores           # Partition
 
 
 
