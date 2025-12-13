@@ -154,6 +154,6 @@ def evaluate_model(model_name, y_true, predictions):
     print(f"classification report: {report} \n \n")
 
 
-# evaluate_model("safety neurons", y_test_sn, predictions_test_sn)
+evaluate_model("safety neurons", y_test_sn, predictions_test_sn)
 evaluate_model("pca", y_test_pca, predictions_test_pca)
 evaluate_model("full", y_test_full, predictions_test_full)
