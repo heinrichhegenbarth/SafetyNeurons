@@ -105,7 +105,7 @@ y_test_full = test_raw.iloc[:, 0]
 
 # svm with safety neurons
 print("training safety neurons model")
-model_sn = SVC()
+model_sn = LinearSVC(dual=False)
 model_sn.fit(X_train_sn, y_train_sn)
 joblib.dump(model_sn, f"{OUTPUT_PATH}/model_sn.pkl")
 print("dumping safety neurons model")
@@ -113,7 +113,7 @@ print("\n")
 
 # svm with pca
 print("training pca model")
-model_pca = SVC()
+model_pca = LinearSVC(dual=False)
 model_pca.fit(X_train_pca, y_train_pca)
 joblib.dump(model_pca, f"{OUTPUT_PATH}/model_pca.pkl")
 print("dumping pca model")
@@ -121,7 +121,7 @@ print("\n")
 
 # svm with full data
 print("training full model")
-model_full = SVC()
+model_full = LinearSVC(dual=False)
 model_full.fit(X_train_full, y_train_full)
 joblib.dump(model_full, f"{OUTPUT_PATH}/model_full.pkl")
 print("dumping pca model")
