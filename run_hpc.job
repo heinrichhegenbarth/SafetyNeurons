@@ -3,12 +3,11 @@
 #SBATCH --job-name=SafetyNeurons    # Job name
 #SBATCH --output=job.%j.out         # Name of output file
 #SBATCH --cpus-per-task=1           # Your program is mostly single-threaded
-#SBATCH --gres=gpu                  # Request a GPU
+#SBATCH --gres=gpu:a100_40gb:1                 # Request a GPU
 #SBATCH --mem=16G                   # Increase memory request
 #SBATCH --time=01:00:00             # Max run time
 #SBATCH --partition=acltr           # Partition
-#SBATCH --mail-user=hehe24ae@student.cbs.dk
-#SBATCH --mail-type=END
+
 
 
 echo "Running on $(hostname):"
