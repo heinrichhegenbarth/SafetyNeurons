@@ -21,8 +21,8 @@ test_raw = pd.read_csv(f"{BASE_PATH}/testing_data.csv")
 safety_neurons = pd.read_csv(f"{BASE_PATH}/top_safetyneurons.csv")
 
 # limit data for testing to 10 samples
-train_raw = train_raw.sample(10)
-test_raw = test_raw.sample(10)
+# train_raw = train_raw.sample(10)
+# test_raw = test_raw.sample(10)
 
 print(f"train_raw shape: {train_raw.shape}")  # train_raw shape: (3539, 92161)
 print(f"test_raw shape: {test_raw.shape}")  # test_raw shape: (885, 92161)
@@ -104,12 +104,12 @@ y_test_full = test_raw.iloc[:, 0]
 # training the models
 
 # svm with safety neurons
-# print("training safety neurons model")
-# model_sn = SVC()
-# model_sn.fit(X_train_sn, y_train_sn)
-# joblib.dump(model_sn, f"{OUTPUT_PATH}/model_sn.pkl")
-# print("dumping safety neurons model")
-# print("\n")
+print("training safety neurons model")
+model_sn = SVC()
+model_sn.fit(X_train_sn, y_train_sn)
+joblib.dump(model_sn, f"{OUTPUT_PATH}/model_sn.pkl")
+print("dumping safety neurons model")
+print("\n")
 
 # svm with pca
 print("training pca model")
@@ -129,8 +129,8 @@ print("\n")
 # %%
 # predictions
 
-# predictions_train_sn = model_sn.predict(X_train_sn)
-# predictions_test_sn = model_sn.predict(X_test_sn)
+predictions_train_sn = model_sn.predict(X_train_sn)
+predictions_test_sn = model_sn.predict(X_test_sn)
 
 predictions_train_pca = model_pca.predict(X_train_pca)
 predictions_test_pca = model_pca.predict(X_test_pca)
